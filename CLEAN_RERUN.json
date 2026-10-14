@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "result_file_count": 10,
+  "all_result_files_byte_identical": true,
+  "result_sha256": {
+    "event_envelopes_all_caps.csv": "15745d807381ef8daf3152734490e3939ede3488fddeae397dcd04567adc7930",
+    "RED_PASSAGE_RESULTS.json": "be0d3eca3591b25840b9b3d7395df2f2efb534bfbb35567471ff1e20c2153600",
+    "reference_by_channel.csv": "1ac5a4b564a48ebd3e0531e205d396c882a2635f4264ad1253eb50323b0a888d",
+    "envelope_summary.csv": "32e9b3b8bc28c3c41a62d2a803a53d61731b9c8209b6a33e5f681498fa388136",
+    "leave_one_group_out.csv": "1172f8c1f81ea359811f9eb3c79aa239b0163567030f222b61d7f345d7f9bc0b",
+    "wild_cluster_bootstrap.json": "f8de1544e5f9386dd599fdbdc47f98e3b577957c234127aa0abe7af1cd2779fa",
+    "bootstrap_channel_sums.csv": "642f7de88bdf6f5ed7841c6b44484fa3373b9b0e430123af88a27c07056ecaf0",
+    "markout_upper_events.csv": "94cfd65a3ea2148707ec4997dc1797f0e86bbc63f892a4db62ad5c9f870590fe",
+    "reference_event_statistics.csv": "880e77b1aee59ef31ce450164331a51181640cdab2516b662673d6e7ec4adae1",
+    "support_counts.csv": "be1f9fe2d920694b49c369f830af7e8e36138d00827175d1928085d4471d3b17"
+  },
+  "python": "3.12.14"
+}

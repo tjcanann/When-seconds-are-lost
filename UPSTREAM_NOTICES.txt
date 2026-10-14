@@ -1,0 +1,58 @@
+UPSTREAM ATTRIBUTION AND TERMS — checked 14 October 2026
+
+BINANCE VISION
+Market prices and execution-derived statistics are based on Binance Vision
+historical public spot trades: https://data.binance.vision/ .
+Documentation: https://github.com/binance/binance-public-data .
+Terms: https://github.com/binance/binance-public-data/blob/master/TERMS_AND_CONDITIONS.md .
+
+The current terms specify CC BY-NC-SA 4.0 for the datasets and derived analytical
+indicators, including attribution and ShareAlike requirements for redistributed
+derivatives. Binance-derived data and results in this package carry that license:
+https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+Changes: executions were windowed around recorded event times; prices, quantities,
+and purchase windows were transformed into clock-specific returns, bounds, and
+descriptive/inferential statistics. The raw Binance archives are not bundled.
+No Binance sponsorship or endorsement is asserted.
+
+PUMPSENSE
+Ahmed Mahrous, PumpSense ICBC 2026 reproducibility v1.1:
+https://doi.org/10.5281/zenodo.19616802
+https://github.com/AhmedMahrous00/icbc_2026_reproducibility
+The repository displays the following MIT notice. Its inclusion does not replace
+Binance's terms for the exchange-derived fields or grant rights to other sources.
+
+MIT License
+
+Copyright (c) 2026 Ahmed Mahrous
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+NATIVE-HISTORY SOURCE
+Hu, Sihao; Zhang, Zhen; Lu, Shengliang; He, Bingsheng; Li, Zhao (2023).
+Sequence-based target coin prediction for cryptocurrency pump-and-dump.
+https://doi.org/10.1145/3588686
+https://github.com/Bayi-Hu/Pump-and-Dump-Detection-on-Cryptocurrency
+Native message text and native channel/message-ID pairs are not redistributed
+here. This package makes no license grant over that source archive.
+
+AUTHOR'S ANALYSIS
+Taylor J. Canann, Louisiana Tech University, 2026. These scripts and derived
+results accompany the working paper. A separate license for the author's new
+code has not been selected in this delivery. Retain all upstream notices.

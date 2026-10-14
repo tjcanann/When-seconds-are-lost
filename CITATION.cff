@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying working paper and acknowledge the upstream data sources listed in README.md."
+title: "When seconds are lost: Timestamp coarsening in pump-and-dump event studies — replication outputs"
+type: dataset
+authors:
+  - family-names: Canann
+    given-names: Taylor J.
+    affiliation: Louisiana Tech University
+version: "2026-10-14"
+date-released: 2026-10-14
+abstract: "Derived clock-grid data, reproducible analyses, and exploratory channel-clustered bootstrap and price-reference concentration results. No raw Telegram histories are included."

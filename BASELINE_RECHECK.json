@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "cap_event_outcome_rows": 1896,
+  "omission_runs": 209,
+  "common_decomposition_events": 225,
+  "max_absolute_errors": {
+    "lower": 0.0,
+    "upper": 0.0,
+    "width": 0.0,
+    "native_value": 0.0,
+    "floor_value": 0.0,
+    "omission_n": 0.0,
+    "omission_assets": 0.0,
+    "omission_channels": 0.0,
+    "omission_mean_lower": 0.0,
+    "omission_mean_upper": 0.0,
+    "omission_mean_native": 0.0,
+    "omission_mean_floor": 0.0,
+    "omission_median_width": 0.0,
+    "omission_p90_width": 0.0,
+    "omission_negative_all_clocks": 0.0,
+    "omission_nonnegative_all_clocks": 0.0,
+    "omission_sign_ambiguous": 0.0
+  }
+}

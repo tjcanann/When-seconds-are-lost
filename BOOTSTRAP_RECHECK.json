@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "numerator": 14188,
+  "denominator": 8388608,
+  "one_sided_p": 0.0016913414001464844,
+  "independent_enumeration": "Half-grid plus sign symmetry, expanded cluster-variance identity, math.fsum group inputs",
+  "direct_event_level_draws_checked": 100,
+  "max_direct_t_difference": 1.7763568394002505e-15
+}

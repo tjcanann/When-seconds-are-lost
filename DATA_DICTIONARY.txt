@@ -1,0 +1,83 @@
+DATA DICTIONARY — 14 OCTOBER 2026
+
+data/candidate_clock_outcomes.csv.gz
+Unit: corrected event x candidate second; 316 x 60 = 18,960 rows.
+Every event has the integers 0,...,59 exactly once.
+
+event_id: inherited corrected event key; not necessarily a distinct economic episode.
+canonical_asset_id: inherited canonical coin identifier.
+pump_channel: public source-channel label, used for clustering and omissions.
+native_symbol: Binance market symbol (base asset traded against BTC).
+native_second: verified recorded message's second within its UTC minute, 0,...,59.
+candidate_second: proposed replacement second in that same minute, 0,...,59.
+clock_time_ns: candidate UTC time, integer nanoseconds since Unix epoch.
+native_time_ns: recorded native UTC time, integer nanoseconds since Unix epoch.
+archive_covered: archived continuous coverage spans the required primary windows.
+n_buy: number of executions with buyer_maker=False in [clock, clock+60 seconds).
+buy_quantity: sum of aggressive-purchase quantities, in base-asset units.
+buy_notional_btc: sum of price*quantity for those purchases, in BTC.
+terminal_price: price of last execution strictly before clock+600 seconds, BTC/base unit.
+terminal_age_seconds: clock+600 minus that execution time, in seconds.
+terminal_time_ns: integer UTC execution time of the terminal price.
+terminal_trade_id: exchange trade ID selecting the terminal execution.
+pre_price: price of last execution strictly before the candidate clock.
+pre_age_seconds: candidate clock minus pre-price execution time, in seconds.
+pre_time_ns: integer UTC execution time of the pre-price.
+pre_trade_id: exchange trade ID selecting the pre-price execution.
+peak_price: highest execution price in [clock, clock+600 seconds).
+markout: terminal_price * buy_quantity / buy_notional_btc - 1.
+peak: peak_price / pre_price - 1.
+markout_supported: primary 60-second-cap eligibility; purchases and fresh terminal.
+peak_supported: primary 60-second-cap eligibility; fresh pre-price and later execution.
+no_purchases: purchase window has no aggressive purchases.
+no_terminal_mark: no earlier terminal execution retained.
+stale_terminal: terminal price is older than 60 seconds.
+no_pre_reference: no earlier pre-reference execution retained.
+stale_pre: pre-price is older than 60 seconds.
+no_post_print: no execution in the ten-minute post-clock window.
+joint_supported: both primary outcomes are supported at this clock.
+
+Missing values are blank. Raw outcome columns can contain values at clocks that
+fail freshness; a nonmissing outcome alone does not establish support.
+Every fresh-price rule uses <= its cap. All event windows are half-open.
+Execution ties are ordered by trade ID. Native timestamps are whole seconds;
+the integer nanosecond storage does not imply nanosecond source-clock precision.
+Exchange trade IDs are not Telegram message IDs or trader identifiers.
+Avoid importing nanosecond timestamps through floating-point spreadsheet cells.
+
+results/event_envelopes_all_caps.csv
+Unit: event x outcome x freshness cap; 316 x 2 x 3 = 1,896 rows.
+cap_seconds: 30, 60, or 300. supported_clocks: 0,...,60.
+support: full (60), partial (1,...,59), zero (0).
+lower/upper: min/max over all candidate clocks ONLY when full support holds.
+width: upper-lower, in return units. native_value/floor_value: supported native
+or minute-floor outcome; they can exist even when the full grid is unsupported.
+
+results/reference_event_statistics.csv
+244 peak-supported events; joint_full=True selects the common 225-event sample.
+reference_simple_return = pre_price_native/pre_price_floor - 1.
+reference_log_change = ln(pre_price_native/pre_price_floor).
+above_simple_5pct: strict simple return > 0.05.
+above_log_005: strict log change > 0.05 (equivalent simple return > 5.1271%).
+maximum_component = ln(peak_price_floor/peak_price_native).
+delta_log_peak = ln[(1+peak_floor)/(1+peak_native)].
+delta_peak = peak_floor-peak_native; delta_markout = markout_floor-markout_native.
+delta_markout is descriptive raw-clock output on the 244 rows; use joint_full
+for the 225-event common-sample markout comparisons reported in the paper.
+
+results/reference_by_channel.csv
+Separate rows for sample=joint225 and sample=peak244.
+share_total_reference_log: channel's SIGNED reference-log sum divided by the
+sample's signed sum; not a fraction of events or a causal contribution.
+
+results/markout_upper_events.csv and bootstrap_channel_sums.csv
+The former contains the 281 full-support primary markout event envelopes.
+The latter contains their 23 channel sums and sizes. sum_upper aggregates the
+event maxima; mean_upper divides by channel n; event_weight=n/281.
+unrestricted_residual_sum = sum_upper - n * overall_event_mean.
+The null-imposed bootstrap uses uncentered upper endpoints as restricted
+residuals at a zero-mean null, not unrestricted centered residuals.
+
+All returns are decimals. Multiply by 100 to express percentages, and multiply
+differences in returns by 100 to express percentage points. Reference components
+and their accounting decomposition are in natural log points.

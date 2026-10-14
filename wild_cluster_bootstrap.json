@@ -1,0 +1,22 @@
+{
+  "outcome": "event maximum purchase markout",
+  "N": 281,
+  "channels": 23,
+  "null": "E[u_i] >= 0, evaluated at boundary zero",
+  "alternative": "E[u_i] < 0",
+  "method": "Null-imposed Rademacher wild cluster bootstrap-t, CRV1 (WCR11)",
+  "equal_event_mean": -0.029509755612642012,
+  "cluster_robust_se": 0.00879272212168463,
+  "observed_t": -3.3561569675749205,
+  "exhaustive_multiplier_assignments": 8388608,
+  "lower_tail_count_including_ties": 14188,
+  "one_sided_p": 0.0016913414001464844,
+  "ties": 1,
+  "tie_tolerance": 1e-12,
+  "nearest_non_tied_statistic_distance": 7.143382807495158e-06,
+  "smallest_cluster": 1,
+  "largest_cluster": 79,
+  "largest_cluster_share": 0.28113879003558717,
+  "sampling_scope": "Exploratory model-based diagnostic; channel independence assumed. Not a random sample of all attempts.",
+  "enumeration_scope": "Exact enumeration of the bootstrap distribution, not exact finite-sample population inference."
+}

@@ -1,0 +1,20 @@
+{
+  "created_utc_date": "2026-10-14",
+  "input_file": "data/candidate_clock_outcomes.csv.gz",
+  "compressed_sha256": "4691083aed0dd23471c038ab0f0f3a769cf81060dc3b0b6f950d4a3179ca7919",
+  "uncompressed_sha256": "7df95794e3cc253d68d1d93e4e9da5456791217385b49af5f1835e68fc2628f1",
+  "rows": 18960,
+  "events": 316,
+  "candidate_seconds_per_event": 60,
+  "archival_source": "PumpDump_SSRN_Audit_and_Replication_2026-10-13.zip",
+  "archival_source_sha256": "6d1d51d3a41a3fae4b8137a74447c7e521cd23c4a591d4520a0b2041ada910a1",
+  "input_lineage": [
+    "PumpDump_SSRN_Audited_2026-10-13/inputs/letter_package.zip",
+    "PumpDump_Economics_Letters_2026-10-13/inputs/clock_gate.zip",
+    "PumpDump_Contribution_Gate_2026-10-13/results/candidate_clock_outcomes.csv"
+  ],
+  "redistributed_inputs": "Derived clock outcomes only. No raw Telegram messages or native channel/message IDs.",
+  "original_trade_file_count": 432,
+  "original_trade_rows": 5801643,
+  "not_reproduced_by_default": "Raw source acquisition, native-message identity validation, CPI reconciliation."
+}
