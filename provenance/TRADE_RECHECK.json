@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "events": 316,
+  "clock_rows": 18960,
+  "parsed_files_rechecked": 305,
+  "max_absolute_errors": {
+    "markout": 6.661338147750939e-16,
+    "peak": 0.0,
+    "pre_price": 0.0,
+    "terminal_price": 0.0,
+    "peak_price": 0.0
+  },
+  "method": "Independent Boolean-window reconstruction and math.fsum from hashed individual trade extracts; no measurement implementation imported.",
+  "limits": "Checks the 316-event clock grid against preserved trade files. Does not recollect messages, validate original collection coverage, or redownload original exchange ZIP files."
+}

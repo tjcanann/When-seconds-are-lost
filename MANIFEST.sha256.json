@@ -1,19 +1,31 @@
 {
   "CITATION.cff": {
-    "bytes": 597,
-    "sha256": "0b68d60396222d9237c1fecb25c86d9d9e6dca82dafb41e4bc0f8d5034fb8fe9"
+    "bytes": 821,
+    "sha256": "8ae9373b195b35cfc10fb038eddff6eccf8f790e0a2a3b10343f29a67f81d7ee"
   },
   "DATA_DICTIONARY.txt": {
     "bytes": 5080,
     "sha256": "07f50ebbe87317bbe2b34165e9f452539fde2669d0f614a616ce1920a892b7ed"
   },
   "README.md": {
-    "bytes": 8073,
-    "sha256": "bb0bf77c96d2ec810c6700bd978510afd408e7f6a8046f2ee725e3dab55c3c80"
+    "bytes": 11937,
+    "sha256": "931f0bed1557f8bac09eb86736e1dd869674f19bb2ee08fc1bca92d83046ba4e"
+  },
+  "code/cpi_envelopes.py": {
+    "bytes": 15774,
+    "sha256": "c67a8b22e7026f621a210e2c65ed07709a215c44d104cdd803d9f2fde331fd4b"
   },
   "code/reproduce.py": {
     "bytes": 13947,
     "sha256": "9edcb0a9d28184bed3d7e3ffc8d9feff905cbf6ae3638c81836610b28bc017ea"
+  },
+  "code/rr_sensitivity.py": {
+    "bytes": 10412,
+    "sha256": "34fea4bddf7a8a1b630d0460474844d55ad6c96d7822452a950f2ef2d9c161ef"
+  },
+  "code/test_cpi_envelopes.py": {
+    "bytes": 7036,
+    "sha256": "f9d6a11113d5ce0ca52dd22fb76ea3e7ef3791d362855f596575b94b94549381"
   },
   "code/verify_against_trades.py": {
     "bytes": 5286,
@@ -22,6 +34,10 @@
   "code/verify_bootstrap.py": {
     "bytes": 2423,
     "sha256": "8e96239ee0e9ae083ddca4ea69252f9bd5f2f7b761e49bec48f7abb786848b55"
+  },
+  "code/write_manifest.py": {
+    "bytes": 708,
+    "sha256": "aeb2751d69ffa5b00d71bf511ebd4b66072d60e5c1135dc931a0fc187bc2a444"
   },
   "data/candidate_clock_outcomes.csv.gz": {
     "bytes": 1046870,
@@ -94,6 +110,26 @@
   "results/reference_event_statistics.csv": {
     "bytes": 47822,
     "sha256": "880e77b1aee59ef31ce450164331a51181640cdab2516b662673d6e7ec4adae1"
+  },
+  "results/revision/cpi/RR_RESULTS.json": {
+    "bytes": 5196,
+    "sha256": "9f6917fbaa6d5339577a4c0f05fb89db441a233b3311b8355a2461437640fe53"
+  },
+  "results/revision/verified/RR_RESULTS.json": {
+    "bytes": 6128,
+    "sha256": "561f5feed3c4f5258fa21316d721860b981fa8437af20e61112a127319a68455"
+  },
+  "results/revision/verified/fixed_benchmark_peak_cap60_events.csv": {
+    "bytes": 26620,
+    "sha256": "cab0bfcb48e13f42eb4849700d3e7936c609d38b304ee743cc6471db2b968f22"
+  },
+  "results/revision/verified/markout_cap60_membership.csv": {
+    "bytes": 29572,
+    "sha256": "24d2c73312996eab2d38d1a916d219ae4e5853340c2deaad12c56ee24577b3cd"
+  },
+  "results/revision/verified/peak_cap60_membership.csv": {
+    "bytes": 27403,
+    "sha256": "3f530d5e28fc6404aee3da120e33936393b92208a6b2513b840af9d74318bd8c"
   },
   "results/support_counts.csv": {
     "bytes": 378,

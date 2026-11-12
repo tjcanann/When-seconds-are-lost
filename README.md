@@ -2,7 +2,7 @@
 
 Replication outputs for **When seconds are lost: Timestamp coarsening in pump-and-dump event studies**, Taylor J. Canann, Louisiana Tech University.
 
-Version: 14 October 2026. This release adds the requested channel-clustered bootstrap and reference-price concentration results to the audited clock analysis.
+Version: 12 November 2026, for the Economics Letters revision (MS EL70396R1). This release restores the folder layout that the scripts expect; adds the revision's varying-membership bound and fixed-benchmark peak (Eqs. 3 and 4 of the letter) for the verified sample; and adds the code and outputs of the minute-only application to the Crypto Pump Island (CPI) events (Online Appendix S7). The 14 October 2026 release added the channel-clustered bootstrap and reference-price concentration results to the audited clock analysis.
 
 ## Reproduce
 
@@ -12,6 +12,7 @@ With Python 3.12, from this directory:
 python -m pip install -r requirements.txt
 python code/reproduce.py
 python code/verify_bootstrap.py
+python code/rr_sensitivity.py data/candidate_clock_outcomes.csv.gz results/revision/verified
 ```
 
 The analysis runs offline after installation. It uses the included derived grid: 316 events, 60 candidate seconds per event, and 18,960 rows. Results are saved in `results/`. No API keys or original Telegram histories are needed. The complete Rademacher bootstrap distribution has 8,388,608 assignments; enumeration usually takes seconds to a few minutes depending on hardware.
@@ -39,6 +40,38 @@ The verification script reads `results/`. All outcome values are decimal returns
 | `envelope_summary.csv` | Headline means, bounds, sign counts, and freshness sensitivity |
 | `leave_one_group_out.csv` | All 209 asset/channel omission runs |
 
+## Revision analyses (MS EL70396R1)
+
+`code/rr_sensitivity.py` reads any 60-clock event grid and computes, at freshness caps of 30, 60, and 300 seconds:
+
+1. the full-support clock envelope (it first reproduces the published counts and endpoints);
+2. the varying-membership bound (letter Eq. 3): fully supported events always enter, and a partially supported event enters at its lowest or highest defined value or drops out at an undefined second. The script checks the prefix rule that finds each endpoint against exhaustive enumeration before it reads any data;
+3. the fixed-benchmark peak (letter Eq. 4): the reference price is fixed at the last trade before the minute starts, and only the ten-minute peak window shifts with the clock.
+
+| File in `results/revision/` | Contents |
+|---|---|
+| `verified/RR_RESULTS.json` | All revision statistics for the 316-event verified sample, all caps |
+| `verified/markout_cap60_membership.csv`, `verified/peak_cap60_membership.csv` | For each event: supported clocks, minimum and maximum over defined clocks, floor value, support class, and whether it enters each varying-membership endpoint |
+| `verified/fixed_benchmark_peak_cap60_events.csv` | Event-level fixed-reference peak minima, maxima, floor and native values |
+| `cpi/RR_RESULTS.json` and `cpi/*.csv` | The same outputs for the 7,920 CPI events, computed from `results/cpi/clock_grid.csv.gz` |
+
+Verified sample, 60-second cap: the varying-membership markout bound is [−10.70%, −2.64%], with 281 and 302 events entering, against [−10.70%, −2.95%] on the 281 fully supported events. With the reference fixed at the minute start, the mean peak on the 244 fully supported events ranges from 26.78% to 41.97%, so 38% of the original 2.16%–42.64% range remains. CPI events, 60-second cap: the varying-membership markout bound is [−0.31%, 2.11%], with 6,868 and 6,325 events entering, and the fixed-reference mean peak ranges from 4.50% to 4.93%.
+
+## Minute-only application (Crypto Pump Island)
+
+`code/cpi_envelopes.py` applies the same rules to events known only to the minute. It downloads Binance daily trade files from data.binance.vision, checks each against its published SHA-256 checksum, and caches them. `code/test_cpi_envelopes.py` is a synthetic end-to-end test (`python code/test_cpi_envelopes.py test_work`).
+
+```bash
+# 1. check the implementation against the audited grid (re-downloads the 316 events' trade files)
+python code/cpi_envelopes.py --validate-grid data/candidate_clock_outcomes.csv.gz --output provenance/cpi_validation
+# 2. run the CPI events
+python code/cpi_envelopes.py --events data/cpi_binance_events.csv --output results/cpi
+# 3. revision statistics
+python code/rr_sensitivity.py results/cpi/clock_grid.csv.gz results/revision/cpi
+```
+
+`data/cpi_binance_events.csv` lists the 7,920 CPI events (event ID, Binance BTC symbol, UTC minute, channel), taken from the filtered analysis file released by Clough and Edwards (2024; GitLab link below). `provenance/cpi_validation/VALIDATION.json` records the check that all 18,960 verified clock rows were reproduced from freshly downloaded archives (status PASS). `results/cpi/` holds the event/clock grid, event envelopes, and `SUMMARY.json`. If `clock_grid.csv.gz` is absent because of file-size limits, step 2 regenerates it.
+
 ## Results
 
 The purchase-markout mean upper endpoint is −2.95098%. The one-sided null-imposed wild channel bootstrap-t test gives p = 0.0016913414, using 281 events and 23 channels. This is a model-based diagnostic requiring independence across channel clusters. Exact enumeration removes simulation error; it does not establish exact finite-sample inference or population representativeness.
@@ -58,7 +91,7 @@ Public sources:
 
 `provenance/binance_trade_archive_manifest.json` lists the 432 archived parsed-file sources, exchange ZIP URLs, retrieval times, exchange checksums, parsed-file hashes, row counts, and coverage windows. These files contain 5,801,643 retained executions across the broader inherited universe; they are not all observations in the 316-event clock analysis. A file hash identifies bytes, not economic authenticity.
 
-This compact release reproduces the clock-summary statistics and the new red-passage calculations from the saved analytical grid. It does **not** include raw Telegram text, native Telegram IDs, raw exchange tapes, private correspondence, or third-party paper PDFs. It does not rerun source collection, historical clock corrections, original native-message matching, or the separate CPI reconciliation. Those audit inputs remain in the author's dated full archive; do not describe this compact release as containing every original input.
+This compact release reproduces the clock-summary statistics, the red-passage calculations, and the revision analyses from the saved analytical grids, and it includes the code, event list, and outputs of the minute-only application. It does **not** include raw Telegram text, native Telegram IDs, raw exchange tapes, private correspondence, or third-party paper PDFs. It does not rerun source collection, historical clock corrections, original native-message matching, or the separate CPI reconciliation. Those audit inputs remain in the author's dated full archive; do not describe this compact release as containing every original input.
 
 ## Optional trade-tape verification
 
@@ -86,6 +119,6 @@ Retain `licenses/UPSTREAM_NOTICES.txt`. Binance-derived data and analytical indi
 
 ## Citation
 
-Canann, Taylor J. (2026). *When seconds are lost: Timestamp coarsening in pump-and-dump event studies*. Replication outputs, version 2026-10-14. Louisiana Tech University. See `CITATION.cff`.
+Canann, Taylor J. (2026). *When seconds are lost: Timestamp coarsening in pump-and-dump event studies*. Replication outputs, version 2026-11-12. Louisiana Tech University. https://github.com/tjcanann/When-seconds-are-lost. See `CITATION.cff`.
 
-No repository URL or DOI has been assigned in this package. Add the actual public URL to the paper after uploading this directory's contents. This package does not publish anything automatically.
+`MANIFEST.sha256.json` lists the size and SHA-256 hash of every file in this release; `python code/write_manifest.py` regenerates it.

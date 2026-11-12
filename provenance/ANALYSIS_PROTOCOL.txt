@@ -1,0 +1,38 @@
+RED-PASSAGE ANALYSIS PROTOCOL — 14 OCTOBER 2026
+
+Scope: the four red passages in Timestamp_Coarsening_letter_and_appendix.pdf.
+This protocol is internal and exploratory. Earlier headline results are known.
+
+1. Primary inferential diagnostic: intercept-only regression of each event's
+   maximum supported first-minute purchase markout over the 60 candidate seconds,
+   using the existing 281-event, 23-channel full-support sample at the 60-second
+   freshness cap. Test H0: mu >= 0 against H1: mu < 0 at the boundary mu = 0.
+   Use a null-imposed restricted wild cluster bootstrap-t (CRV1, Rademacher
+   multipliers shared within channels). Enumerate all 2^23 multiplier vectors.
+   Include ties in the lower-tail probability. Enumeration eliminates Monte Carlo
+   error; it does not make the underlying population inference finite-sample exact.
+   The equal-event weighting is unchanged. No data reweighting or p-value selection.
+   Report assumptions and unequal cluster sizes. No additional bootstrap variants
+   or clustering schemes are planned; the requested channel-cluster inference
+   cannot establish absence of cross-channel dependence.
+
+2. Compute the simple within-minute pre-reference change and its log counterpart
+   from the same native and minute-floor pre-prices. Primary decomposition sample:
+   225 events supporting both outcomes at all clocks. Separately report the
+   244-event peak-only sample to clarify the different denominator of the
+   leave-one-channel-out peak result. Strict thresholds: simple change > 0.05;
+   log change > 0.05. They are not identical thresholds.
+
+3. Identify the channel minimizing the leave-one-channel-out peak upper endpoint
+   from the already specified 244-event sample; do not select a different channel
+   based on the new thresholds. Report its event count, threshold count, share of
+   threshold exceedances, contribution to the summed reference log component,
+   and outside-channel counts/means. Report reference-term quantiles on the
+   225-event common sample and per-channel descriptive results.
+
+4. Public output: derived candidate-clock data, reproducible code, complete
+   generated outputs, source URLs and hashes. Do not include raw message text,
+   native channel/message IDs, email correspondence, private working archives,
+   or third-party literature PDFs. The new package will explicitly distinguish
+   replication from the saved analytical clock grid from end-to-end source
+   acquisition and native-message validation. No repository URL will be invented.

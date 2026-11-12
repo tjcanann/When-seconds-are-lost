@@ -6,6 +6,7 @@ authors:
   - family-names: Canann
     given-names: Taylor J.
     affiliation: Louisiana Tech University
-version: "2026-10-14"
-date-released: 2026-10-14
-abstract: "Derived clock-grid data, reproducible analyses, and exploratory channel-clustered bootstrap and price-reference concentration results. No raw Telegram histories are included."
+version: "2026-11-12"
+date-released: 2026-11-12
+repository-code: "https://github.com/tjcanann/When-seconds-are-lost"
+abstract: "Derived clock-grid data, reproducible analyses, and exploratory channel-clustered bootstrap and price-reference concentration results, the Economics Letters revision analyses (varying-membership bound and fixed-benchmark peak), and the minute-only application to Crypto Pump Island events. No raw Telegram histories are included."
